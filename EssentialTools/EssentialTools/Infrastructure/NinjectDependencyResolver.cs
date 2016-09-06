@@ -25,6 +25,9 @@ namespace EssentialTools.Infrastructure
             // Discount.cs Property 접근
             //kernel.Bind<IDiscountHelper>().To<DefaultDiscountHelper>().WithPropertyValue("DiscountSize", 50M);
             kernel.Bind<IDiscountHelper>().To<DefaultDiscountHelper>().WithConstructorArgument("discountParam", 40M);
+
+            // 조건적 바인딩 (p.180)
+            kernel.Bind<IDiscountHelper>().To<FlexibleDiscountHelper>().WhenInjectedInto<IValueCalculator>();
         }
 
         public object GetService(Type serviceType)
