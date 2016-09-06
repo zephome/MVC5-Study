@@ -1,5 +1,6 @@
 ﻿using EssentialTools.Models;
 using Ninject;
+using Ninject.Web.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,7 +21,8 @@ namespace EssentialTools.Infrastructure
 
         private void AddBinding()
         {
-            kernel.Bind<IValueCalculator>().To<LinqValueCalculator>();
+            // 개체 범위 설정
+            kernel.Bind<IValueCalculator>().To<LinqValueCalculator>().InRequestScope();
 
             // Discount.cs Property 접근
             //kernel.Bind<IDiscountHelper>().To<DefaultDiscountHelper>().WithPropertyValue("DiscountSize", 50M);

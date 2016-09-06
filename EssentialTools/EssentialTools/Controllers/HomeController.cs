@@ -13,7 +13,7 @@ namespace EssentialTools.Controllers
         // Ninject 설정 후
         private IValueCalculator calc;
 
-        public HomeController(IValueCalculator calcParam)
+        public HomeController(IValueCalculator calcParam, IValueCalculator calc2)
         {
             calc = calcParam;
         }
